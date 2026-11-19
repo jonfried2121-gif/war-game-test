@@ -48,8 +48,6 @@ class Game:
 
     def get_winner(self,user_card:Card,computer_card:Card):
         if user_card.value == computer_card.value:
-            self.user.add_card(user_card)
-            self.computer.add_card(computer_card)
             winer = "Draw"
         else:
             winer = self.user if user_card.value > computer_card.value else self.computer
@@ -59,10 +57,12 @@ class Game:
         if winner == self.user:
             self.user.add_card(computer_card)
             self.user.add_card(user_card)
-        else:
+        elif winner == self.computer:
             self.computer.add_card(user_card)
             self.computer.add_card(computer_card)
-        return
+        else:
+            self.user.add_card(user_card)
+            self.computer.add_card(computer_card)
         
     
 
